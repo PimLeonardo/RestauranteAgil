@@ -14,14 +14,25 @@
 
 <body>
     <div class="container">
-        <form action="cadastrar_pedido.php" method="$_POST">
+        <h2>Fazer pedidos</h2>
+        <form action="cadastrar_pedido.php" method="POST">
             <div class="form-group">
                 <label for="nome_produto" class="form-label">Nome do produto:</label>
-                <input type="text" class="form-control" id="nome_produto" placeholder="Digite o nome do produto">
+                <input name="nome_produto" type="text" class="form-control" id="nome_produto" required  placeholder="Digite o nome do produto">
             </div>
             <div class="form-group">
-                
+                <label for="nome_produto" class="form-label">Quantidade:</label>
+                <input name="qtd_produto" type="number" class="form-control" id="qtd_produto" required  min="1" max="10" placeholder="Quantidade">
             </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea name="observacao" class="form-control" rows="3" id="observacao" placeholder="Descrição" maxlength="400"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="nome_produto" class="form-label">Preço:</label>
+                <input name="preco_produto" type="number" class="form-control" id="preco_produto" required  placeholder="00.00$">
+            </div>
+            <button type="submit" class="btn btn-dark">Fazer pedido</button>
         </form>
     </div>
 </body>

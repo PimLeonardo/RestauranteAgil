@@ -6,14 +6,9 @@ $email = $_POST["email"];
 $senha = $_POST["senha"];
 $usuario_autenticado = false;
 
-$servername = "127.0.0.1";
-$username = "root";
-$password = "root";
-
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=restaurante_bd", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //echo "Conexão feita com sucesso";
+    include("conexao_bd.php");
+    
     $stmt = $conn->prepare("SELECT id FROM usuario WHERE email=:email AND senha=md5(:senha)");
     $stmt->bindParam(':email',$email, PDO::PARAM_STR);
     $stmt->bindParam(':senha',$senha, PDO::PARAM_STR);

@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label for="valor_produto" class="form-label">Valor</label>
-                <input name="valor_produto" type="number" class="form-control" id="valor_produto" min="0" max="9999" required placeholder="Digite o valor do produto">
+                <input name="valor_produto" type="number" class="form-control" id="valor_produto" min="0" max="9999" step=".01" required placeholder="Digite o valor do produto">
             </div>
             <div class="form-group">
                 <label for="foto_produto" class="form-label">Foto</label>
@@ -49,8 +49,16 @@
                 <textarea name="info_produto" class="form-control" rows="3" id="info_produto" placeholder="Digite informações adicionais do produto" maxlength="400"></textarea>
             </div>
             <button type="submit" class="btn btn-dark">Adicionar produto</button>
-        </form> 
+        </form>
         <br>
+
+        <?php
+        include("conexao_bd.php");
+
+        $stmt = $conn->prepare("SELECT * FROM item_produto");
+        $stmt->execute();
+        $resultado["produtos"] = $stmt->fetchAll();
+        ?>
 
         <table class="table table-hover">
             <thead>
@@ -60,38 +68,23 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Valor</th>
-                    <th scope="col">Informação adicional</th>
+                    <th scope="col">Informações adicionais</th>
                     <th scope="col">Data e hora</th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>@teste</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>@teste</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>@teste</td>
-                </tr>
+                <?php foreach ($resultado["produtos"] as $p) : ?>
+                    <tr>
+                        <th><?= $p["id"]; ?></th>
+                        <td><?= $p["foto"]; ?></td>
+                        <td><?= $p["nome"]; ?></td>
+                        <td><?= $p["categoria"]; ?></td>
+                        <td><?= $p["valor"]; ?></td>
+                        <td><?= $p["info_adicional"]; ?></td>
+                        <td><?= $p["data_hora"]; ?></td>
+                    </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
     </div>

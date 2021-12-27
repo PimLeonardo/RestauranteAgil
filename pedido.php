@@ -13,39 +13,48 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <h2 src="logo.png" width="30" height="30" class="d-inline-block align-top text-Light" alt="">Restaurante Ágil</h2>
-        </a>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="logoff.php">SAIR</a>
-            </li>
-        </ul>
-    </nav>
-
     <div class="container">
-        <h2>Fazer pedidos</h2>
-        <form action="cadastrar_pedido.php" method="POST">
-            <div class="form-group">
-                <label for="nome_produto" class="form-label">Nome do produto</label>
-                <input name="nome_produto" type="text" class="form-control" id="nome_produto" required placeholder="Digite o nome do produto">
+        <div class="row">
+            <div class="card-pedidos">
+                <div class="card">
+                    <div class="card-header">
+                        Fazer pedidos
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <form action="cadastrar_pedido.php" method="POST">
+                                    <div class="form-group">
+                                        <label for="nome_produto" class="form-label">Nome do produto</label>
+                                        <input name="nome_produto" type="text" class="form-control" id="nome_produto" required placeholder="Digite o nome do produto">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="qtd_produto" class="form-label">Quantidade</label>
+                                        <input name="qtd_produto" type="number" class="form-control" id="qtd_produto" required min="1" max="10" placeholder="Quantidade">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Descrição</label>
+                                        <textarea name="observacao" class="form-control" rows="3" id="observacao" placeholder="Descrição" maxlength="400"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="preco_produto" class="form-label">Preço</label>
+                                        <input name="preco_produto" type="number" class="form-control" id="preco_produto" min="0" max="9999" step=".01" required placeholder="00.00$">
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-6">
+                                            <a class="btn btn-dark btn-block btn-block" href="home.php">Voltar</a>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn btn-dark btn-block btn-block" type="submit">Enviar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="qtd_produto" class="form-label">Quantidade</label>
-                <input name="qtd_produto" type="number" class="form-control" id="qtd_produto" required min="1" max="10" placeholder="Quantidade">
-            </div>
-            <div class="form-group">
-                <label>Descrição</label>
-                <textarea name="observacao" class="form-control" rows="3" id="observacao" placeholder="Descrição" maxlength="400"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="preco_produto" class="form-label">Preço</label>
-                <input name="preco_produto" type="number" class="form-control" id="preco_produto" min="0" max="9999" required placeholder="00.00$">
-            </div>
-            <button type="submit" class="btn btn-dark">Fazer pedido</button>
-        </form>
+        </div>
     </div>
 </body>
 

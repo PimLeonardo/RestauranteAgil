@@ -27,6 +27,10 @@
 
     <div class="container">
         
+        <br>
+        <a class="btn btn-dark btn-block btn-block" href="produto.php">produto</a>
+        <a class="btn btn-dark btn-block btn-block" href="pedido.php">pedido</a>
+
     </div>
 </body>
 

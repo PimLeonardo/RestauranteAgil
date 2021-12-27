@@ -15,7 +15,7 @@ try {
     // TODO pegar id do usuario logado
     $stmt->execute([null, $nome_produto, $observacao, $preco_produto, $qtd]);
 
-    echo "<script>alert('Pedido realizado com sucesso');location.href='home.php';</script>";
+    echo "<script>alert('Pedido realizado com sucesso');location.href='pedido.php';</script>";
 
 } catch (PDOException $e) {
     echo "Inserção falhou: " . $e->getMessage();
